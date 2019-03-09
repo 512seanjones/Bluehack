@@ -1,39 +1,59 @@
 from gmplot import gmplot
 import googlemaps
-# Place map
-gmap = gmplot.GoogleMapPlotter(37.766956, -122.438481, 13)
+from pymongo import MongoClient
+gmaps = googlemaps.Client(key='')
+def client():
+    """
+    Connects to the mongoDB client
+    """
+    client = MongoClient('localhost',27017)
+    return client.bluehack
 
-address = input()
-# Polygon
-golden_gate_park_lats, golden_gate_park_lons = zip(*[
-    (37.771269, -122.511015),
-    (37.773495, -122.464830),
-    (37.774797, -122.454538),
-    (37.771988, -122.454018),
-    (37.773646, -122.440979),
-    (37.772742, -122.440797),
-    (37.771096, -122.453889),
-    (37.768669, -122.453518),
-    (37.766227, -122.460213),
-    (37.764028, -122.510347),
-    (37.771269, -122.511015)
-    ])
-#gmap.plot(golden_gate_park_lats, golden_gate_park_lons, 'cornflowerblue', edge_width=10)
+db = client()
+location_db = db.locations
 
-# Scatter points
-top_attraction_lats, top_attraction_lons = zip(*[
-    (37.769901, -122.498331),
-    (37.768645, -122.475328),
-    (37.771478, -122.468677),
-    (37.769867, -122.466102),
-    (37.767187, -122.467496),
-    (37.770104, -122.470436)
-    ])
-#gmap.scatter(top_attraction_lats, top_attraction_lons, '#3B0B39', size=40, marker=False)
-gmap.heatmap(golden_gate_park_lats, golden_gate_park_lons)
-# Marker
-hidden_gem_lat, hidden_gem_lon = 37.770776, -122.461689
-#gmap.marker(hidden_gem_lat, hidden_gem_lon, 'cornflowerblue')
+def insert_location(street, city, state):
+    """
+    Inserts a street, city, and state into our database i.e. '530 Hudson Street, Hoboken, New Jersey'
+    """
+    db.locations.insert_one({"state": state, "city": city, "street":street})
 
-# Draw
+def get_all_lngs_and_lats(state, city):
+    """
+    This function finds the longitudes and latitudes of all marked spots in an area by searching for any spots in the same city and state.
+    It searches our database for matching results and then obtain's their longitutdes and latitudes in using geocode and gmaps.
+    Params:
+        state: A string representing the state we are searching in
+        city: A string representing the city we are searching in
+    Returns:
+        lats: a list of ints representing longitutdes
+        lngs: a list of ints representing longitudes
+    """
+    lngs = []
+    lats = []
+    for location in db.locations.find({"state":state,"city": city}):
+        geocode_result = gmaps.geocode(location['street']+',' + location['city']+ ',' +location['state'])
+        latitude = geocode_result[0]["geometry"]["location"]['lat']
+        longitude = geocode_result[0]["geometry"]["location"]['lng']
+        lngs.append(longitude)
+        lats.append(latitude)
+    return lats, lngs
+
+print('Enter State: ')
+state = "New Jersey"#input()
+
+print('Enter City: ')
+city = "Hoboken"#input()
+
+print('Enter Street: ')
+street = "100 Washington Street"#input()
+
+geocode_result = gmaps.geocode(street+',' + city+ ',' +state)#get geocode for desired address including longitudes and latitudes
+latitude = geocode_result[0]["geometry"]["location"]['lat']
+longitude = geocode_result[0]["geometry"]["location"]['lng']
+
+gmap = gmplot.GoogleMapPlotter(latitude, longitude, 13)#set the location and size of the google map
+insert_location(street,city,state)
+lats, lngs = get_all_lngs_and_lats(state,city)
+gmap.heatmap(lats, lngs)
 gmap.draw("my_map.html")
