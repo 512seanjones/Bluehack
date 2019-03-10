@@ -2,7 +2,36 @@
 
 {% block content %}
 
-<object data= "my_map.html">
-</object>
+<div id="container">
+
+    <div id="form">
+        <h1>Set Location</h1>
+        <form action="/heatmap" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.city.label }}<br>
+                {{ form.city(size=32) }}<br>
+            </p>
+            <p>
+                {{ form.street.label }}<br>
+                {{ form.street(size=32) }}<br>
+            </p>
+            <p>
+                {{ form.state.label }}<br>
+                {{ form.state(size=32) }}<br>
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    <div>
+
+    <center>
+        <div id="map">
+            <iframe src = "{{ url_for('my_map') }}" width = "1000" height = "800" align = center>
+                Sorry your browser does not support inline frames.
+            </iframe>
+         </div>
+     </center>
+     
+</div>
 
 {% endblock %}

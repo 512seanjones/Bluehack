@@ -18,13 +18,20 @@ def index():
 def getdata():
     form = DataForm()
     if form.validate_on_submit():
-        gmplottest.main(form.street.data, form.city.data, form.state.data)
+        gmplottest.insert_and_show_map(form.street.data, form.city.data, form.state.data)
         return redirect(url_for('index'))
     return render_template('getdata.html', title='Form', form=form)
 
+@app.route('/heatmap', methods=['GET', 'POST'])
+def heatmap():
+    form = DataForm()
+    if form.validate_on_submit():
+        gmplottest.just_show_map(form.street.data, form.city.data, form.state.data)
+    return render_template('heatmap.html', title='Heatmap', form=form)
+
 @app.route('/my_map')
 def my_map():
-    return render_template('my_map.html', title='Heatmap')
+    return render_template('my_map.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

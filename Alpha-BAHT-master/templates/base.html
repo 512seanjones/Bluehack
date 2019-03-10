@@ -1,13 +1,10 @@
 <html>
-    <head>
-        <title>Bluehack</title>
-    </head>
     <body>
         <div>
             Bluehack:
             <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('getdata') }}">Form</a>
-            <a href="{{ url_for('my_map') }}" target= "_blank">Heatmap</a>
+            <a href="{{ url_for('heatmap') }}">Heatmap</a>
         </div>
         {% block content %}{% endblock %}
     </body>
