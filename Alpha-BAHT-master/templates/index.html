@@ -1,59 +1,44 @@
-{% extends "base.html" %}
-
-{% block content %}
-
+<html>
 	<head>
-		<title>
-			Home
-		</title>
+		<title>Blue Hacks - Team Alpha</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
-	<body>
-		<center>
-		<h1 style="background-color:Tomato;">
-			Team Alpha
-		</h1>
-		</center>
-		<center>
-		<h1 style="background-color:DodgerBlue;">
-			Blue Hacks
-		</h1>
-		<center>
-		<center>
-		<h3>
-			Heat Map
-		</h3>
-		<img src="heatmapexample.jpg" width="100" height = "80" alt="My Pic">
-		</center>
-		<h5>
-			Heat map designed to assist Police Offers with determine trafficking hotspots
-		</h5>
-		<h3>
-			Resources
-		</h3>
-		<left>
-		<h5>
-			Resource 1:
-	  <a href="https://humantraffickinghotline.org/">Human Traffic Hotline</a>
-		</h5>
-		</left>
-		<left>
-		<h5>
-			Resource 2:
-		<a href="https://www.unodc.org/unodc/human-trafficking/">United Nations human trafficking page</a>
-		</h5>
-		</left>
-		<left>
-		<h5>
-			Resource 3:
-		<a href="https://polarisproject.org/"> Extra info on fighting trafficking</a>
-		</h5>
-		</left>
-		<p>
-			This is a paragraph tag. This tag is used
-			when we write a lot of text on our test web page.
-			The paragraph tag automatically inserts a break tag
-			at the end.
-		</p>
+	<body>	
+		<div id="container">
+			<div id="header">
+				<h1>Blue Hacks - Team Alpha
+			</div>
+			<div id="content">
+				<div id="nav">
+					<center>
+					<h3>Navigation</h3>
+					<center/>
+					<ul>
+						<li><a class="selected" href="">Home</a></li>
+						<br/>
+						<li><a href="getdata">Form</a></li>
+						<br/>
+						<li><a href="my_map">Heat Map</a></li>
+						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<br/><br/>
+				
+					</ul>
+				</div>
+				<div id="main">
+				
+					<h2>Home Page</h2>
+					
+				<center>
+				<img src="heatmapexample.jpg" width="400" height = "320" alt="My Pic">
+				</center>
+				<p> PARAGRAPH 1 DFIDJSFOIJDSOFJDSOFJODSJFIODSOFJOIDSJFOJDSOFJDSIOFJDOSJFODSJ </p>
+				<P> PARAGRAPH 2 FJDOFJODSAJFOIDJSFOIJSDAOIFJDSOIFIJDOSJFOISDAJFOSIFOJIDSOFJO </p>
+				<p> Contact: <br/> alpha@bluehack.com <br/></p>
+	
+				</div>
+			</div>	
+			<div id="footer">
+				Copyright &copy; 2019 BlueHacks.
+			</div>
 	</body>
-
-{% endblock %}
+</html>

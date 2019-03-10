@@ -1,0 +1,73 @@
+body{
+	background-color: #EEE;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+a{
+	text-decoration:none;
+	color: white;
+}
+
+/* removes margin from all of headings if zero */
+h1, h2, h3{
+	margin: 20;
+}
+
+h3{
+	text-decoration: underline;
+}
+
+h2{
+	text-align: center;
+	text-decoration: underline;
+}
+
+#container{
+	background-color: white;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#header {
+	background-color: blue;
+	color: white;
+	text-align: center;
+	padding: 10px; /* padder for title */
+}
+
+#content{
+
+	/*top, right, bottom, left-hand side if you wanted different sizes for each side*/
+}
+
+#nav{
+	background-color: red;
+	width: 180px;
+	/*want them to float next to each other*/
+	float: left;
+}
+
+/*target the unordered list*/
+#nav ul{
+	list-style-type: none;
+	padding: 0; /*removes space at the left*/
+}
+
+#nav.selected{
+	font-weight: bold;
+}
+#main{
+	width:600px;
+	float: right;  /* puts them next to each other */
+}
+
+#footer{
+	/* need to get background color throughout page*/
+	clear: both; /*clear of any floating elements before we display*/
+	padding: 10px; /*give footer 10pixels of padding*/
+	background-color: #999999; /*Set background color  */
+	color: white; /*Changes copyright color to white */
+	text-align: right; /*Pushes copyright to the right side */
+
+}
