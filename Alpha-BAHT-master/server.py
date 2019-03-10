@@ -3,7 +3,7 @@ from form import DataForm
 from config import Config
 import gmplottest
 
-app = Flask(__name__, static_folder='static', static_url_path='/static', template_folder='templates')
+app = Flask(__name__)
 app.config.from_object(Config)
 
 @app.route("/")
