@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Enter Data</h1>
-    <form method="get">
+    <form action="/getdata" method="POST" novalidate>
         {{ form.hidden_tag() }}
         <p>
             {{ form.city.label }}<br>
