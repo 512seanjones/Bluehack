@@ -4,6 +4,6 @@ from wtforms.validators import DataRequired
 
 class DataForm(FlaskForm):
     city = StringField('City', validators=[DataRequired()])
-    state = StringField('Street', validators=[DataRequired()])
-    street = StringField('State', validators=[DataRequired()])
+    state = StringField('State', validators=[DataRequired()])
+    street = StringField('Street', validators=[DataRequired()])
     submit = SubmitField('Submit')

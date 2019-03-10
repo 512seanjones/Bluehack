@@ -18,7 +18,7 @@ def index():
 def getdata():
     form = DataForm()
     if form.validate_on_submit():
-        gmplottest.main(str(form.street), str(form.city), str(form.state))
+        gmplottest.main(form.street.data, form.city.data, form.state.data)
         return redirect(url_for('index'))
     return render_template('getdata.html', title='Form', form=form)
 
