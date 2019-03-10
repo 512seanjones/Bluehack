@@ -14,6 +14,10 @@ def home():
 def index():
     return render_template('index.html', title='Home')
 
+@app.route("/resources")
+def resources():
+    return render_template('resources.html', title='Resources')
+
 @app.route('/getdata',  methods=['GET', 'POST'])
 def getdata():
     form = DataForm()

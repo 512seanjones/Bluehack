@@ -1,9 +1,9 @@
 <html>
 	<head>
 		<title>Blue Hacks - Team Alpha</title>
-		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" href= "{{ url_for('static',filename='styles/style.css') }}" />
 	</head>
-	<body>	
+	<body>
 		<div id="container">
 			<div id="header">
 				<h1>Blue Hacks - Team Alpha
@@ -17,33 +17,33 @@
 					<ul>
 						<li><a class="selected" href="index.html">Home</a></li>
 						<br/>
-						<li><a href="getdata.html">Form</a></li>
+						<li><a href="{{ url_for('getdata') }}">Form</a></li>
 						<br/>
-						<li><a href="my_map.html">Heat Map</a></li>
+						<li><a href="{{ url_for('heatmap') }}">Heat Map</a></li>
 						<br/>
-						<li><a href="resources.html"> Resources</a></li>
+						<li><a href="{{ url_for('resources') }}"> Resources</a></li>
 						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 						<br/><br/><br/>
-				
+
 					</ul>
 				</div>
-				
-				
+
+
 				<div id="main">
-				
+
 					<h2>Home Page</h2>
-					
-			
+
+
 				<img src="heatmap.png" width="400" height = "320" alt="My Pic">
-				
+
 				<p> To File a Report, Click 'form'. </p>
 				<P> Please See Crisis Resources if Needed </p>
 				<br/>
 				<p> Contact: <br/> alpha@bluehack.com <br/></p>
-			
+
 				</div>
-				
-			</div>	
+
+			</div>
 			<center/>
 			<div id="footer">
 				Copyright &copy; 2019 BlueHacks.
