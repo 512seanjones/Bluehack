@@ -58,10 +58,11 @@ h2{
 #nav.selected{
 	font-weight: bold;
 }
+
 #main{
 	width:824px;
 	float: right;  /* puts them next to each other */
-	
+
 }
 
 #footer{
