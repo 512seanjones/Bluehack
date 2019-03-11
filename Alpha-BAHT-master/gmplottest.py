@@ -2,7 +2,7 @@ from gmplot import gmplot
 import googlemaps
 from pymongo import MongoClient
 
-gmaps = googlemaps.Client(key='AIzaSyB9U5CKtT6NfxtLvwdll0_ou8-5d-vCa2Y')
+gmaps = googlemaps.Client(key='')
 def client():
     """
     Connects to the mongoDB client
